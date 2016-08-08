@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+// Set source and target to Java 8
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+dependencies {
+    compile rootProject.files('deps/natj/java/natj.jar')
+    compile rootProject
+}

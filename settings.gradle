@@ -1,0 +1,11 @@
+rootProject.name = 'Cinder'
+
+include ':deps/blocks/Cairo/binding'
+
+include ':samples/ArcballDemo'
+include ':samples/audio/DelayFeedback'
+include ':samples/BasicApp'
+include ':samples/CameraPersp'
+include ':samples/Geometry'
+include ':samples/opengl/Cube'
+include ':samples/Wisteria'

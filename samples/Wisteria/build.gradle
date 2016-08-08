@@ -1,0 +1,18 @@
+group 'org.moe'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    compile project(':deps/blocks/Cairo/binding')
+}
+
+sample {
+    javaMainClass = "wisteria/WisteriaLauncher"
+    additionalJavaClasspaths += "${project(':deps/blocks/Cairo/binding').buildDir}/classes/main"
+    additionalNativeSources += rootProject.file('deps/blocks/Cairo/native-src/Cairo.cpp')
+    additionalHeaderIncludes += rootProject.file('deps/blocks/Cairo/include')
+    additionalLibrarySearchPaths += rootProject.file('deps/blocks/Cairo/native/darwin')
+    additionalLibraries += ["z", "png16", "pixman-1", "cairo"]
+    additionalFrameworks += ["CoreFoundation", "CoreGraphics"]
+}
+
+rootProject.configureSample(this)

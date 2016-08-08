@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Cinder.iml" filepath="$PROJECT_DIR$/.idea/modules/Cinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Cinder_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Cinder_main.iml" group="Cinder" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Cinder_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Cinder_test.iml" group="Cinder" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding.iml" filepath="$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding.iml" group="deps/blocks/Cairo/binding" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding_main.iml" filepath="$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding_main.iml" group="deps/blocks/Cairo/binding" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding_test.iml" filepath="$PROJECT_DIR$/.idea/modules/deps/blocks/Cairo/binding/deps_blocks_Cairo_binding_test.iml" group="deps/blocks/Cairo/binding" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo.iml" group="samples/ArcballDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo_main.iml" group="samples/ArcballDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/ArcballDemo/samples_ArcballDemo_test.iml" group="samples/ArcballDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp.iml" group="samples/BasicApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp_main.iml" group="samples/BasicApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/BasicApp/samples_BasicApp_test.iml" group="samples/BasicApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp.iml" group="samples/CameraPersp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp_main.iml" group="samples/CameraPersp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/CameraPersp/samples_CameraPersp_test.iml" group="samples/CameraPersp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry.iml" group="samples/Geometry" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry_main.iml" group="samples/Geometry" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Geometry/samples_Geometry_test.iml" group="samples/Geometry" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria.iml" group="samples/Wisteria" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria_main.iml" group="samples/Wisteria" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/Wisteria/samples_Wisteria_test.iml" group="samples/Wisteria" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback.iml" group="samples/audio/DelayFeedback" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback_main.iml" group="samples/audio/DelayFeedback" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/audio/DelayFeedback/samples_audio_DelayFeedback_test.iml" group="samples/audio/DelayFeedback" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube.iml" group="samples/opengl/Cube" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube_main.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube_main.iml" group="samples/opengl/Cube" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube_test.iml" filepath="$PROJECT_DIR$/.idea/modules/samples/opengl/Cube/samples_opengl_Cube_test.iml" group="samples/opengl/Cube" />
+    </modules>
+  </component>
+</project>

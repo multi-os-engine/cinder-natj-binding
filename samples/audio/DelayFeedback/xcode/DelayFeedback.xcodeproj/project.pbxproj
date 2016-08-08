@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		5835A5F71CCD1228002DE7AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 587622DA1CCCFFE600E86F17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 587622DE1CCCFFE600E86F17;
+			remoteInfo = Builder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5835A5E61CCD11F8002DE7AF /* DelayFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DelayFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		583E27641CCD023200E2CD6F /* natj_cxx_stub.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = natj_cxx_stub.cpp; path = "../build/natj-processor/natj_cxx_stub.cpp"; sourceTree = "<group>"; };
+		587622E51CCD002D00E86F17 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../deps/utils/main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		583E27631CCD022500E2CD6F /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				583E27641CCD023200E2CD6F /* natj_cxx_stub.cpp */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
+		587622D91CCCFFE600E86F17 = {
+			isa = PBXGroup;
+			children = (
+				587622E41CCD001400E86F17 /* Common */,
+				583E27631CCD022500E2CD6F /* Generated */,
+				5835A5E61CCD11F8002DE7AF /* DelayFeedback.app */,
+			);
+			sourceTree = "<group>";
+		};
+		587622E41CCD001400E86F17 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				587622E51CCD002D00E86F17 /* main.cpp */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		587622DE1CCCFFE600E86F17 /* Builder */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = build;
+			buildConfigurationList = 587622E11CCCFFE600E86F17 /* Build configuration list for PBXLegacyTarget "Builder" */;
+			buildPhases = (
+			);
+			buildToolPath = "${PROJECT_DIR}/../../../../gradlew";
+			buildWorkingDirectory = "${PROJECT_DIR}/..";
+			dependencies = (
+			);
+			name = Builder;
+			passBuildSettingsInEnvironment = 0;
+			productName = DelayFeedback;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		5835A5E51CCD11F8002DE7AF /* DelayFeedback */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5835A5F41CCD11F8002DE7AF /* Build configuration list for PBXNativeTarget "DelayFeedback" */;
+			buildPhases = (
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5835A5F81CCD1228002DE7AF /* PBXTargetDependency */,
+			);
+			name = DelayFeedback;
+			productName = DelayFeedback;
+			productReference = 5835A5E61CCD11F8002DE7AF /* DelayFeedback.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		587622DA1CCCFFE600E86F17 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "MOE";
+				TargetAttributes = {
+					5835A5E51CCD11F8002DE7AF = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					587622DE1CCCFFE600E86F17 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 587622DD1CCCFFE600E86F17 /* Build configuration list for PBXProject "DelayFeedback" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 587622D91CCCFFE600E86F17;
+			productRefGroup = 587622D91CCCFFE600E86F17;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				587622DE1CCCFFE600E86F17 /* Builder */,
+				5835A5E51CCD11F8002DE7AF /* DelayFeedback */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXTargetDependency section */
+		5835A5F81CCD1228002DE7AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 587622DE1CCCFFE600E86F17 /* Builder */;
+			targetProxy = 5835A5F71CCD1228002DE7AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5835A5F51CCD11F8002DE7AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../build/native-app";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = org.moe.DelayFeedback;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5835A5F61CCD11F8002DE7AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/../build/native-app";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = org.moe.DelayFeedback;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		587622DF1CCCFFE600E86F17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		587622E01CCCFFE600E86F17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		587622E21CCCFFE600E86F17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		587622E31CCCFFE600E86F17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5835A5F41CCD11F8002DE7AF /* Build configuration list for PBXNativeTarget "DelayFeedback" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5835A5F51CCD11F8002DE7AF /* Debug */,
+				5835A5F61CCD11F8002DE7AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		587622DD1CCCFFE600E86F17 /* Build configuration list for PBXProject "DelayFeedback" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				587622DF1CCCFFE600E86F17 /* Debug */,
+				587622E01CCCFFE600E86F17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		587622E11CCCFFE600E86F17 /* Build configuration list for PBXLegacyTarget "Builder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				587622E21CCCFFE600E86F17 /* Debug */,
+				587622E31CCCFFE600E86F17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 587622DA1CCCFFE600E86F17 /* Project object */;
+}

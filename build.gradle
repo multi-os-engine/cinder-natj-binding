@@ -1,0 +1,298 @@
+group 'org.moe'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+repositories {
+    mavenCentral()
+}
+
+/*
+ * Utility function for running execs
+ */
+static String runInlineExec(String... cmds) {
+    ProcessBuilder builder = new ProcessBuilder(cmds)
+    final Process process = builder.start()
+    InputStream is = process.getInputStream()
+    InputStreamReader isr = new InputStreamReader(is)
+    BufferedReader br = new BufferedReader(isr)
+    String line
+    while (line == null && (line = br.readLine()) != null) {
+        System.out.println(line)
+    }
+    return line.trim()
+}
+
+/*
+ * Calculate JAVA_HOME on demand
+ */
+if (System.getenv('JAVA_HOME') == null) {
+    println("Calculating JAVA_HOME")
+    System.setProperty('custom.java.home.8', runInlineExec('/usr/libexec/java_home', '-v', '1.8'))
+} else {
+    System.setProperty('custom.java.home.8', System.getenv('JAVA_HOME'))
+}
+
+class SampleExtension {
+    def javaMainClass
+    def additionalJavaClasspaths = []
+    def collectedClassOutput
+    def processedClassOutput
+    def additionalNativeSources = []
+    def additionalHeaderIncludes = []
+    def additionalLibrarySearchPaths = []
+    def additionalLibraries = []
+    def additionalFrameworks = []
+}
+
+subprojects { subproject ->
+    if (subproject.path.startsWith(":samples/")) {
+        /*
+         * Apply the Java plugin
+         */
+        subproject.apply plugin: 'java'
+
+        /*
+         * Set source and target compatibility
+         */
+        subproject.sourceCompatibility = "1.8"
+        subproject.targetCompatibility = "1.8"
+
+        /*
+         * Set default dependencies
+         */
+        subproject.dependencies {
+            compile files('deps/natj/java/natj.jar')
+            compile rootProject
+        }
+
+        /*
+         * Create an extension for samples
+         */
+        subproject.extensions.create("sample", SampleExtension)
+
+        /*
+         * Define NatJ processors input and output paths
+         */
+        subproject.sample {
+            collectedClassOutput = "${subproject.buildDir}/natj-processor/input-main"
+            processedClassOutput = "${subproject.buildDir}/natj-processor/output-main"
+        }
+    }
+}
+
+def configureSample(sampleProject) {
+    /*
+     * Set default dependencies
+     */
+    sampleProject.dependencies {
+        compile files('deps/natj/java/natj.jar')
+        compile rootProject
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+    /*
+     * Create a task for collection the class files
+     */
+    sampleProject.task('collectClasses', type: Copy) {
+        outputs.files(sampleProject.sample.collectedClassOutput)
+        into sampleProject.sample.collectedClassOutput
+
+        inputs.files("${sampleProject.buildDir}/classes/main")
+        from "${sampleProject.buildDir}/classes/main"
+
+        inputs.files('deps/natj/java/natj.jar')
+        from files('deps/natj/java/natj.jar')
+
+        inputs.source(rootProject.sourceSets.main.output)
+        from rootProject.sourceSets.main.output
+
+        sampleProject.sample.additionalJavaClasspaths.each {
+            inputs.files("$it")
+            from "$it"
+        }
+    }
+    sampleProject.tasks['collectClasses'].dependsOn(sampleProject.tasks['classes'])
+
+    /*
+     * Create a task for processing the class files
+     */
+    sampleProject.task('processClasses', type: JavaExec) {
+        classpath = rootProject.files('deps/natj/utils/natj-processor.jar',
+                'deps/natj/java/natj.jar',
+                sampleProject.sample.collectedClassOutput)
+        main 'org.moe.natj.processor.Main'
+        args "-m", "c++"
+
+        inputs.files(sampleProject.sample.collectedClassOutput)
+        args "-i", sampleProject.sample.collectedClassOutput
+
+        outputs.files(sampleProject.sample.processedClassOutput,
+                "${sampleProject.buildDir}/natj-processor/natj_cxx_stub.cpp")
+        args "-o", sampleProject.sample.processedClassOutput
+        args "-gen_cxx_source", "${sampleProject.buildDir}/natj-processor/natj_cxx_stub.cpp"
+    }
+    sampleProject.tasks['processClasses'].dependsOn(sampleProject.tasks['collectClasses'])
+    sampleProject.tasks['jar'].dependsOn(sampleProject.tasks['processClasses'])
+
+    /*
+     * Create a task for compiling the native code
+     */
+    sampleProject.task('nativeCompile', type: Exec) {
+        executable = 'clang'
+
+        // Set compiler options
+        args '-shared', '-fPIC', '-std=c++11', '-stdlib=libc++'
+
+        // Create debug build
+        if (rootProject.hasProperty("sample.native.debug")) {
+            args '-g'
+        }
+
+        // Set input files
+        args "${sampleProject.buildDir}/natj-processor/natj_cxx_stub.cpp"
+        sampleProject.sample.additionalNativeSources.each {
+            args "$it"
+        }
+
+        // Set header include search paths
+        args "-I${rootProject.file("deps/natj/include")}"
+        args "-I${rootProject.file("deps/cinder/include")}"
+        args "-I${System.getProperty('custom.java.home.8') + "/include"}"
+        args "-I${System.getProperty('custom.java.home.8') + "/include/darwin"}"
+        sampleProject.sample.additionalHeaderIncludes.each {
+            args "-I$it"
+        }
+
+        // Set output
+        args '-o', "${sampleProject.buildDir}/libsample.dylib"
+
+        // Set library search paths
+        args "-L${rootProject.file("deps/natj/native/darwin")}"
+        args "-L${rootProject.file("deps/cinder/native/darwin")}"
+        sampleProject.sample.additionalLibrarySearchPaths.each {
+            args "-L$it"
+        }
+
+        // Set runtime search path
+        args '-rpath', "${rootProject.file("deps/natj/native/darwin")}"
+
+        // Set libraries to link
+        args '-lnatj', '-lc++'
+
+        // Link cinder
+        if (rootProject.hasProperty("sample.native.debug")) {
+            args '-lcinder'
+        } else {
+            args '-lcinder_d'
+        }
+
+        sampleProject.sample.additionalLibraries.each {
+            args "-l$it"
+        }
+
+        // Set frameworks to link
+        args '-framework', 'Accelerate'
+        args '-framework', 'AudioToolbox'
+        args '-framework', 'AudioUnit'
+        args '-framework', 'AVFoundation'
+        args '-framework', 'Cocoa'
+        args '-framework', 'CoreAudio'
+        args '-framework', 'CoreMedia'
+        args '-framework', 'CoreVideo'
+        args '-framework', 'IOKit'
+        args '-framework', 'IOSurface'
+        args '-framework', 'OpenGL'
+        args '-framework', 'QTKit'
+        sampleProject.sample.additionalFrameworks.each {
+            args '-framework', "$it"
+        }
+
+        // Set stdout/stderr
+        standardOutput = System.out
+        errorOutput = System.out
+    }
+    sampleProject.tasks['nativeCompile'].dependsOn(sampleProject.tasks['processClasses'])
+
+    /*
+     * Create a task for compiling the native code
+     */
+    sampleProject.task('nativeExecCompile', type: Exec) {
+        executable = 'clang'
+
+        // Set compiler options
+        args '-fPIC', '-std=c++11', '-stdlib=libc++'
+
+        // Create debug build
+        if (rootProject.hasProperty("sample.native.debug")) {
+            args '-g'
+        }
+
+        // Set input files
+        args "${rootProject.file('deps/utils/main.cpp')}"
+
+        // Set header include search paths
+        args "-I${System.getProperty('custom.java.home.8') + "/include"}"
+        args "-I${System.getProperty('custom.java.home.8') + "/include/darwin"}"
+        args "-I${rootProject.file("deps/cinder/include")}"
+
+        // Define macros
+        args "-D__CINDER_SAMPLE_MAIN_CLASS__=\"${sampleProject.sample.javaMainClass}\""
+        args "-D__CINDER_SAMPLE_JAVA_CLASS_PATH__=\"${rootProject.file('deps/natj/java/natj.jar')}:${sampleProject.sample.processedClassOutput}\""
+        args "-D__CINDER_SAMPLE_JAVA_LIBRARY_PATH__=\"${rootProject.file('deps/natj/native/darwin')}:${sampleProject.buildDir}\""
+
+        // Set output
+        args '-o', "${sampleProject.buildDir}/sample"
+
+        // Set library search paths
+        args "-L${System.getProperty('custom.java.home.8')}/jre/lib/server"
+        args "-L${sampleProject.buildDir}"
+
+        // Set runtime search path
+        args '-rpath', "${System.getProperty('custom.java.home.8')}/jre/lib/server"
+        args '-rpath', "${rootProject.file("deps/natj/native/darwin")}"
+
+        // Set libraries to link
+        args '-ljvm', '-lsample', '-lc++'
+
+        // Set stdout/stderr
+        standardOutput = System.out
+        errorOutput = System.out
+    }
+    sampleProject.tasks['nativeExecCompile'].dependsOn(sampleProject.tasks['nativeCompile'])
+
+    /*
+     * Create a task for packaging the sample into a wrapper
+     */
+    sampleProject.task('packageApp', type: Exec) {
+        executable = "${rootProject.file("deps/utils/package.sh")}"
+        args "${sampleProject.buildDir}/sample"
+        args "${sampleProject.buildDir}/native-app"
+        args "${sampleProject.projectDir.name}"
+        args "${sampleProject.buildDir}/resources/main"
+    }
+    sampleProject.tasks['packageApp'].dependsOn(sampleProject.tasks['nativeExecCompile'])
+    sampleProject.tasks['build'].dependsOn(sampleProject.tasks['packageApp'])
+
+    /*
+     * Create a task for building and launching the sample app
+     */
+    sampleProject.task('buildAndLaunch') << {
+        def builder = new ProcessBuilder('open', "${sampleProject.buildDir}/native-app/${sampleProject.projectDir.name}.app");
+        if (rootProject.hasProperty("sample.debug")) {
+            builder.environment().put("DEBUG_JAVA", "YES")
+        }
+        builder.start();
+        // If for some reason the app fails to launch, increase this timeout
+        Thread.sleep(1000)
+    }
+    sampleProject.tasks['buildAndLaunch'].dependsOn(sampleProject.tasks['build'])
+}
+
+dependencies {
+    compile files('deps/natj/java/natj.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

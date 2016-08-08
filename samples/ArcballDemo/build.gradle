@@ -1,0 +1,8 @@
+group 'org.moe'
+version '1.0-SNAPSHOT'
+
+sample {
+    javaMainClass = "arcballdemo/ArcballDemoLauncher"
+}
+
+rootProject.configureSample(this)

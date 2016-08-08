@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Cinder_main" target="1.8" />
+      <module name="Cinder_test" target="1.8" />
+      <module name="deps_blocks_Cairo_binding_main" target="1.8" />
+      <module name="deps_blocks_Cairo_binding_test" target="1.8" />
+      <module name="samples_ArcballDemo_main" target="1.8" />
+      <module name="samples_ArcballDemo_test" target="1.8" />
+      <module name="samples_audio_DelayFeedback_main" target="1.8" />
+      <module name="samples_audio_DelayFeedback_test" target="1.8" />
+      <module name="samples_BasicApp_main" target="1.8" />
+      <module name="samples_BasicApp_test" target="1.8" />
+      <module name="samples_CameraPersp_main" target="1.8" />
+      <module name="samples_CameraPersp_test" target="1.8" />
+      <module name="samples_Geometry_main" target="1.8" />
+      <module name="samples_Geometry_test" target="1.8" />
+      <module name="samples_opengl_Cube_main" target="1.8" />
+      <module name="samples_opengl_Cube_test" target="1.8" />
+      <module name="samples_Wisteria_main" target="1.8" />
+      <module name="samples_Wisteria_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
